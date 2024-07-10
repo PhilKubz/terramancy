@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4ct4c34a1r8e"]
+
+[ext_resource type="PackedScene" uid="uid://lx10imppgti" path="res://Assets/Objects/Wand.glb" id="1_u0n1r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6no5y"]
+albedo_color = Color(0.305861, 0.292454, 0.19464, 1)
+
+[node name="Wand" instance=ExtResource("1_u0n1r")]
+transform = Transform3D(0.72, 0, 0, 0, 0.72, 0, 0, 0, 0.72, 0, 0, 0)
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6no5y")

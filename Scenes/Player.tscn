@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://n3nu81ax15wb"]
+[gd_scene load_steps=5 format=3 uid="uid://n3nu81ax15wb"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_85utk"]
+[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_k4ge8"]
+[ext_resource type="PackedScene" uid="uid://d4ct4c34a1r8e" path="res://Scenes/Wand.tscn" id="2_8mjer"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u37vx"]
 
@@ -8,7 +9,7 @@
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("1_85utk")
+script = ExtResource("1_k4ge8")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_u37vx")
@@ -16,5 +17,8 @@ mesh = SubResource("CapsuleMesh_u37vx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7dl6t")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.776693, -0.0758376)
+
+[node name="Wand" parent="MainCamera" instance=ExtResource("2_8mjer")]
+transform = Transform3D(0.708838, 0.121098, -0.0358341, -0.0240516, 0.330008, 0.639466, 0.123977, -0.628355, 0.328937, 0.432127, -0.68015, -0.218296)
