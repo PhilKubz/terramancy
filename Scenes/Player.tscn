@@ -1,11 +1,227 @@
-[gd_scene load_steps=5 format=3 uid="uid://n3nu81ax15wb"]
+[gd_scene load_steps=13 format=3 uid="uid://n3nu81ax15wb"]
 
-[ext_resource type="Script" path="res://Scenes/Player.gd" id="1_k4ge8"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_k4ge8"]
 [ext_resource type="PackedScene" uid="uid://d4ct4c34a1r8e" path="res://Scenes/Wand.tscn" id="2_8mjer"]
+[ext_resource type="Script" path="res://Scripts/Weapons_Manager.gd" id="2_heivj"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u37vx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dl6t"]
+
+[sub_resource type="Animation" id="Animation_lyxky"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.432127, -1.63331, -0.218296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.09258, 3.33881, -0.0733038)]
+}
+
+[sub_resource type="Animation" id="Animation_byu8n"]
+resource_name = "Wand Activate"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.432127, -1.63331, -0.218296), Vector3(0.609563, -0.74552, -0.218296), Vector3(0.609563, -0.718866, -0.218296), Vector3(0.578017, -0.624153, -0.218296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.09258, 3.33881, -0.0733038), Vector3(-1.09258, 1.43391, -0.0733038), Vector3(-1.09258, 0.802433, -0.0733038), Vector3(-1.09258, 0.0425336, -0.0733038)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wand:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_a6kyb"]
+resource_name = "Wand Deactivate"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.578017, -0.624153, -0.218296), Vector3(0.578017, -0.850659, -0.218296), Vector3(0.578017, -1.18349, -0.218296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.09258, 0.0425336, -0.0733038), Vector3(-1.09258, 0.858835, -0.0733037), Vector3(-1.09258, 1.41188, -0.0733038)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wand:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_1xj2m"]
+resource_name = "Wand OOA"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.578017, -0.624153, -0.218296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.15, 0.24, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.09258, 0.0425336, -0.0733038), Vector3(-1.09258, -0.303286, -0.0733038), Vector3(-1.09258, 0.273982, -0.0733038), Vector3(-1.09258, -0.334126, -0.0733037), Vector3(-1.09258, 0.0418879, -0.0733038)]
+}
+
+[sub_resource type="Animation" id="Animation_e2c8i"]
+resource_name = "Wand Reload"
+length = 0.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.534969, -0.423819, -0.32167), Vector3(0.534969, -0.383023, -0.522079), Vector3(0.534969, -0.423819, -0.32167)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.11, 0.15, 0.22, 0.29, 0.3, 0.36, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.989989, 0.156852, -0.224556), Vector3(-0.989989, 0.156852, -0.224556), Vector3(-0.452583, 0.0954525, -0.134944), Vector3(0.283482, 0.0893944, -0.0680357), Vector3(0.866975, 0.132839, 0.00842171), Vector3(0.868949, 3.00844, 2.94656), Vector3(-0.838024, 3.01311, -3.13895), Vector3(-1.23919, 0.266417, -0.34563), Vector3(-0.989989, 0.156852, -0.224556)]
+}
+
+[sub_resource type="Animation" id="Animation_ee8uk"]
+resource_name = "Wand Shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Wand:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.578017, -0.624153, -0.218296)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Wand:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.09258, 0.0425336, -0.0733038), Vector3(-0.770256, 0.0277534, -0.0549553), Vector3(-1.09258, 0.0425336, -0.0733038)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ai1n"]
+_data = {
+"RESET": SubResource("Animation_lyxky"),
+"Wand Activate": SubResource("Animation_byu8n"),
+"Wand Deactivate": SubResource("Animation_a6kyb"),
+"Wand OOA": SubResource("Animation_1xj2m"),
+"Wand Reload": SubResource("Animation_e2c8i"),
+"Wand Shoot": SubResource("Animation_ee8uk")
+}
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -20,5 +236,16 @@ shape = SubResource("CapsuleShape3D_7dl6t")
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.776693, -0.0758376)
 
-[node name="Wand" parent="MainCamera" instance=ExtResource("2_8mjer")]
-transform = Transform3D(0.708838, 0.121098, -0.0358341, -0.0240516, 0.330008, 0.639466, 0.123977, -0.628355, 0.328937, 0.432127, -0.68015, -0.218296)
+[node name="Weapons_Manager" type="Node3D" parent="MainCamera"]
+script = ExtResource("2_heivj")
+
+[node name="FPS_Rig" type="Node3D" parent="MainCamera/Weapons_Manager"]
+
+[node name="Wand" parent="MainCamera/Weapons_Manager/FPS_Rig" instance=ExtResource("2_8mjer")]
+transform = Transform3D(-0.722643, 0.0513738, -0.0602695, -0.024584, 0.231902, 0.593406, 0.0960294, 0.445968, -0.301627, 0.432127, -1.63331, -0.218296)
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MainCamera/Weapons_Manager/FPS_Rig"]
+libraries = {
+"": SubResource("AnimationLibrary_4ai1n")
+}

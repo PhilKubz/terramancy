@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://biqmatnxdepus"]
+
+[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_rsup1"]
+
+[resource]
+script = ExtResource("1_rsup1")
+Weapon_Name = "Wand"
+Activate_Animation = "Wand Activate"
+Shoot_Animation = "Wand Shoot"
+Reload_Animation = "Wand Reload"
+Deactivate_Animation = "Wand Deactivate"
+Out_Of_Ammo_Animation = "Wand OOA"
+Current_Ammo = 10
+reserve_Ammo = 10
+Magazine = 10
+Max_Ammo = 20
+Auto_fire = false
