@@ -10,8 +10,11 @@ class_name Weapon_Resource
 @export var Out_Of_Ammo_Animation: String
 
 @export var Current_Ammo: int
-@export var reserve_Ammo: int
+@export var Reserve_Ammo: int
 @export var Magazine: int
 @export var Max_Ammo: int
 
-@export var Auto_fire: bool
+@export var Auto_Fire: bool = false
+@export_flags("Hitscan", "Projectile") var Type
+@export var Weapon_Range : int
+@export var Damage: int

@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @onready var MainCamera = $MainCamera
-@onready var Wand = $MainCamera/Wand  # Assuming the wand is a child of the camera
+# @onready var Wand = $MainCamera/Wand  # Assuming the wand is a child of the camera
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5

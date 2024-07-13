@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddtoqi3d8wtdc"]
+[gd_scene load_steps=6 format=3 uid="uid://ddtoqi3d8wtdc"]
 
 [ext_resource type="Texture2D" uid="uid://d373fg6hymw1q" path="res://Assets/Textures/Prototyping Grids/texture_07.png" id="1_ajlqi"]
+[ext_resource type="Script" path="res://Scripts/World_Objects/physic_target.gd" id="1_h0b2q"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vahys"]
 
@@ -8,15 +9,17 @@
 albedo_texture = ExtResource("1_ajlqi")
 uv1_triplanar = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mchsh"]
-data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5h5c"]
+size = Vector3(0.996582, 1, 1)
 
-[node name="Cube" type="StaticBody3D"]
+[node name="Cube" type="RigidBody3D" groups=["Target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_h0b2q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_vahys")
 surface_material_override/0 = SubResource("StandardMaterial3D_m5ecq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConcavePolygonShape3D_mchsh")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00170898, 0, 0)
+shape = SubResource("BoxShape3D_x5h5c")

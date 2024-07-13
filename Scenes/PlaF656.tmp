@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://n3nu81ax15wb"]
+[gd_scene load_steps=22 format=3 uid="uid://n3nu81ax15wb"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_k4ge8"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_3nbpe"]
@@ -7,8 +7,6 @@
 [ext_resource type="Resource" uid="uid://biqmatnxdepus" path="res://weapon resources/Wand.tres" id="3_dk10p"]
 [ext_resource type="Resource" uid="uid://ds4u7of2vetja" path="res://weapon resources/Sceptre.tres" id="4_r1s2d"]
 [ext_resource type="PackedScene" uid="uid://brdt3ak6sj6yk" path="res://Scenes/Sceptre.tscn" id="5_eo0o0"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_q1cif"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_u37vx"]
 
@@ -88,18 +86,6 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Bullet_Point:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.634337, -0.291518, -0.814962)]
-}
 
 [sub_resource type="Animation" id="Animation_0vwv4"]
 resource_name = "Sceptre Activate"
@@ -140,18 +126,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-1.01753, 3.14159, 0), Vector3(-1.01753, 0.561909, 4.95822e-15), Vector3(-1.01753, 0.621006, 5.42155e-08), Vector3(-0.992992, 0.0591629, 0.00554369)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Bullet_Point:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.624035, -0.226633, -0.820292)]
-}
 
 [sub_resource type="Animation" id="Animation_rb6fb"]
 resource_name = "Sceptre Deactivate"
@@ -191,18 +165,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Bullet_Point:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.624035, -0.226633, -0.820292)]
 }
 
 [sub_resource type="Animation" id="Animation_qae2v"]
@@ -330,18 +292,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Bullet_Point:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.3),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.634337, -0.291518, -0.814962)]
-}
 
 [sub_resource type="Animation" id="Animation_a6kyb"]
 resource_name = "Wand Deactivate"
@@ -381,18 +331,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Bullet_Point:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.634337, -0.291518, -0.814962)]
 }
 
 [sub_resource type="Animation" id="Animation_1xj2m"]
@@ -537,24 +475,6 @@ text = "Weapon Stack: "
 [node name="CurrentWeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -0.5
-offset_top = -0.5
-offset_right = 0.5
-offset_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CanvasLayer/TextureRect"]
-scale = Vector2(6.635, 6.635)
-mesh = SubResource("SphereMesh_q1cif")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("CapsuleMesh_u37vx")
@@ -584,9 +504,6 @@ visible = false
 libraries = {
 "": SubResource("AnimationLibrary_4ai1n")
 }
-
-[node name="Bullet_Point" type="Marker3D" parent="MainCamera/Weapons_Manager/FPS_Rig"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634337, -0.291518, -0.814962)
 
 [connection signal="Update_Ammo" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
 [connection signal="Update_Weapon_Stack" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
