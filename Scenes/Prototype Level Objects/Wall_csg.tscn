@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg85m1rg4j0p2"]
+
+[ext_resource type="Texture2D" uid="uid://ctnlkku0qul17" path="res://Assets/Textures/Prototyping Grids/Dark_1.png" id="1_hkwuv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1uq42"]
+albedo_texture = ExtResource("1_hkwuv")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Wall" type="CSGBox3D"]
+transform = Transform3D(0.128, 0, 0, 0, 5.63307, 0, 0, 0, 8, 0.00177097, 3.26047, -0.0281215)
+use_collision = true
+collision_mask = 15
+size = Vector3(1, 1.14716, 1)
+material = SubResource("StandardMaterial3D_1uq42")

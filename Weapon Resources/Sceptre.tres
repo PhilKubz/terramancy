@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://ds4u7of2vetja"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bl6a7q02jqirh"]
 
-[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_38ojc"]
+[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_kni3s"]
 
 [resource]
-script = ExtResource("1_38ojc")
+script = ExtResource("1_kni3s")
 Weapon_Name = "Sceptre"
 Activate_Animation = "Sceptre Activate"
 Shoot_Animation = "Sceptre Shoot"
@@ -13,7 +13,7 @@ Out_Of_Ammo_Animation = "Sceptre OOA"
 Current_Ammo = 5
 Reserve_Ammo = 10
 Magazine = 5
-Max_Ammo = 10
+Max_Ammo = 15
 Auto_Fire = false
 Type = 2
 Weapon_Range = 2000

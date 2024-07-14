@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://chpdo2rsitowc"]
+
+[ext_resource type="Texture2D" uid="uid://ctnlkku0qul17" path="res://Assets/Textures/Prototyping Grids/Dark_1.png" id="1_cv5we"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_52ugf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2tic"]
+albedo_texture = ExtResource("1_cv5we")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5rqcd"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Wall" type="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.041, 0, 0, 0, 3.152, 0, 0, 0, 6, 0, 1.585, 0)
+mesh = SubResource("BoxMesh_52ugf")
+surface_material_override/0 = SubResource("StandardMaterial3D_a2tic")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.041, 0, 0, 0, 3.152, 0, 0, 0, 6, 0, 1.585, 0)
+shape = SubResource("ConcavePolygonShape3D_5rqcd")

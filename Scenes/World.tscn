@@ -1,10 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cw5w4ynpgqwua"]
+[gd_scene load_steps=11 format=3 uid="uid://cw5w4ynpgqwua"]
 
 [ext_resource type="PackedScene" uid="uid://damextwfety1w" path="res://Scenes/Ground.tscn" id="1_oa4mf"]
 [ext_resource type="PackedScene" uid="uid://n3nu81ax15wb" path="res://Scenes/Player.tscn" id="2_n1bu4"]
-[ext_resource type="PackedScene" uid="uid://bc1sj8jfk074g" path="res://Scenes/Ball.tscn" id="3_dsjbg"]
+[ext_resource type="PackedScene" uid="uid://dq86k7drmc3a6" path="res://Scenes/Ball.tscn" id="3_dsjbg"]
 [ext_resource type="PackedScene" uid="uid://ddtoqi3d8wtdc" path="res://Scenes/Cube.tscn" id="3_i2gty"]
-[ext_resource type="Texture2D" uid="uid://d373fg6hymw1q" path="res://Assets/Textures/Prototyping Grids/texture_07.png" id="5_wcghf"]
+[ext_resource type="PackedScene" uid="uid://bf46aqejffqgl" path="res://Scenes/Prototype Level Objects/Wall_Windows_csg.tscn" id="7_7ha1n"]
+[ext_resource type="PackedScene" uid="uid://cg85m1rg4j0p2" path="res://Scenes/Prototype Level Objects/Wall_csg.tscn" id="7_idx5y"]
+[ext_resource type="PackedScene" uid="uid://mm1x8vfhnsrt" path="res://Scenes/Prototype Level Objects/Slope_csg.tscn" id="8_baqt3"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ht5ec"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -19,15 +21,6 @@ sky = SubResource("Sky_2j52b")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yadhy"]
-data = PackedVector3Array(0, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, -0.5, 0, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="PrismMesh" id="PrismMesh_rffox"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pso8c"]
-albedo_texture = ExtResource("5_wcghf")
-uv1_triplanar = true
-
 [node name="World" type="Node3D"]
 
 [node name="Environment Settings" type="Node3D" parent="."]
@@ -41,26 +34,78 @@ environment = SubResource("Environment_bcfb8")
 [node name="Ground" parent="." instance=ExtResource("1_oa4mf")]
 
 [node name="Player" parent="." instance=ExtResource("2_n1bu4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 39.681)
+
+[node name="LeveL Design Elements" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2275, 0, 0)
+
+[node name="Node3D" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052567, 28.7596)
+
+[node name="Node3D3" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052567, 36.755)
+
+[node name="Node3D6" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052568, 44.7595)
+
+[node name="Node3D2" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 28.7264)
+
+[node name="Node3D4" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 36.724)
+
+[node name="Node3D5" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 44.7259)
+
+[node name="Wall" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+transform = Transform3D(0.0894611, 0, -5.72164, 0, 5.63307, 0, 0.0915462, 0, 5.59132, -5.03849, 3.21847, 21.9205)
+
+[node name="Wall5" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+transform = Transform3D(0.0893972, 0, 5.72554, 0, 5.63307, 0, -0.0916087, 0, 5.58732, 9.40629, 3.21847, 21.8907)
+
+[node name="Wall2" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, 8.24311, 3.24328, 48.6662)
+
+[node name="Wall3" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, -3.85448, 3.24328, 48.6662)
+
+[node name="Wall4" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, 1.91506, 3.24328, 48.6662)
+
+[node name="Slope" parent="LeveL Design Elements" instance=ExtResource("8_baqt3")]
+transform = Transform3D(8.69279, 0, 0, 0, 3.38906, 2.4489, 0, -9.92915, 0.835871, 2.17422, -0.634216, 22.8422)
+size = Vector3(0.994263, 1, 1)
 
 [node name="Objects" type="Node3D" parent="."]
 
-[node name="Ball" parent="Objects" instance=ExtResource("3_dsjbg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3937, 0.5, -28.3433)
-
 [node name="Cube" parent="Objects" instance=ExtResource("3_i2gty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -10.9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 29.526)
 
-[node name="TestSlope" type="StaticBody3D" parent="Objects"]
+[node name="Cube2" parent="Objects" instance=ExtResource("3_i2gty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7813, 0.938518, 25.538)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/TestSlope"]
-transform = Transform3D(-2.98343, -2.10514, 0.162883, -2.10201, 2.98788, 0.114761, -0.199251, 6.80797e-08, -3.64956, -7.97481, 0, -4.54301)
-shape = SubResource("ConcavePolygonShape3D_yadhy")
+[node name="Ball" parent="Objects" instance=ExtResource("3_dsjbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67775, 2.37314, 29.5196)
+collision_layer = 4
+collision_mask = 15
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/TestSlope"]
-transform = Transform3D(-2.98343, -2.10514, 0.162883, -2.10201, 2.98788, 0.114761, -0.199251, 6.80797e-08, -3.64956, -7.97481, 0, -4.54301)
-mesh = SubResource("PrismMesh_rffox")
-skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_pso8c")
+[node name="Cube Stack" type="Node3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2275, 0, 0)
 
-[node name="Cube" parent="." instance=ExtResource("3_i2gty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7813, 0.938518, -7.7382)
+[node name="Cube" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26525, 0.553729, 31.6799)
+
+[node name="Cube5" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26525, 1.57905, 32.2784)
+
+[node name="Cube4" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(0.995873, 0, 0.0907542, 0, 1, 0, -0.0907542, 0, 0.995873, -7.05641, 0.553729, 32.7354)
+
+[node name="Cube3" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.26525, 1.57417, 31.0486)
+
+[node name="Cube2" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(0.969227, 0, -0.24617, 0, 1, 0, 0.24617, 0, 0.969227, -7.07672, 0.553729, 30.5004)
+
+[node name="Cube6" parent="Objects/Cube Stack" instance=ExtResource("3_i2gty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.18407, 2.59901, 31.8109)

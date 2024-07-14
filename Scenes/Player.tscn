@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_3nbpe"]
 [ext_resource type="PackedScene" uid="uid://d4ct4c34a1r8e" path="res://Scenes/Wand.tscn" id="2_8mjer"]
 [ext_resource type="Script" path="res://Scripts/Weapons_Manager.gd" id="2_heivj"]
-[ext_resource type="Resource" uid="uid://biqmatnxdepus" path="res://weapon resources/Wand.tres" id="3_dk10p"]
-[ext_resource type="Resource" uid="uid://ds4u7of2vetja" path="res://weapon resources/Sceptre.tres" id="4_r1s2d"]
+[ext_resource type="Resource" uid="uid://cju26hufkf1di" path="res://Weapon Resources/Wand.tres" id="4_nsktc"]
 [ext_resource type="PackedScene" uid="uid://brdt3ak6sj6yk" path="res://Scenes/Sceptre.tscn" id="5_eo0o0"]
+[ext_resource type="Resource" uid="uid://bl6a7q02jqirh" path="res://Weapon Resources/Sceptre.tres" id="5_prc8b"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_q1cif"]
 
@@ -567,7 +567,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.776693, -0.0758376)
 
 [node name="Weapons_Manager" type="Node3D" parent="MainCamera"]
 script = ExtResource("2_heivj")
-_weapon_resources = Array[Resource("res://Scripts/weapon_resource.gd")]([ExtResource("3_dk10p"), ExtResource("4_r1s2d")])
+_weapon_resources = Array[Resource("res://Scripts/Weapon_Resource.gd")]([ExtResource("4_nsktc"), ExtResource("5_prc8b")])
 Start_Weapons = Array[String](["Wand", "Sceptre"])
 
 [node name="FPS_Rig" type="Node3D" parent="MainCamera/Weapons_Manager"]

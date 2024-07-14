@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bf46aqejffqgl"]
+
+[ext_resource type="PackedScene" uid="uid://cg85m1rg4j0p2" path="res://Scenes/Prototype Level Objects/Wall_csg.tscn" id="1_315xn"]
+[ext_resource type="Texture2D" uid="uid://ctnlkku0qul17" path="res://Assets/Textures/Prototyping Grids/Dark_1.png" id="2_hdtq3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r7cqp"]
+albedo_texture = ExtResource("2_hdtq3")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ls4rx"]
+albedo_texture = ExtResource("2_hdtq3")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="Wall_windows" type="Node3D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_315xn")]
+transform = Transform3D(0.128, 0, 0, 0, 5.63307, 0, 0, 0, 8, 0, 3.26, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(3.38194, 0, 0, 0, 1, 0, 0, 0, 0.753138, 0, 0.14594, 0.242386)
+operation = 2
+size = Vector3(1, 0.710693, 0.181854)
+material = SubResource("StandardMaterial3D_r7cqp")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Wall"]
+transform = Transform3D(3.38194, 0, 0, 0, 1, 0, 0, 0, 0.753138, 0, 0.14594, -0.241889)
+operation = 2
+size = Vector3(1, 0.710693, 0.181854)
+material = SubResource("StandardMaterial3D_ls4rx")
