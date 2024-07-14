@@ -26,7 +26,8 @@ glow_enabled = true
 [node name="Environment Settings" type="Node3D" parent="."]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment Settings"]
-transform = Transform3D(0.727533, -0.510644, 0.45819, 0, 0.667846, 0.7443, -0.686072, -0.541503, 0.48588, 37.5623, 55.6132, 64.7171)
+transform = Transform3D(0.849828, 0.441704, 0.287557, -0.425632, 0.253365, 0.868702, 0.310853, -0.860641, 0.40332, 10.5494, 81.3569, 93.1505)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment Settings"]
 environment = SubResource("Environment_bcfb8")

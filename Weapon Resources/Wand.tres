@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://cju26hufkf1di"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://c5550a20yjbpk"]
 
-[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_d2p0g"]
+[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_ogf8y"]
 
 [resource]
-script = ExtResource("1_d2p0g")
+script = ExtResource("1_ogf8y")
 Weapon_Name = "Wand"
 Activate_Animation = "Wand Activate"
 Shoot_Animation = "Wand Shoot"

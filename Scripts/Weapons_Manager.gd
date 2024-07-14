@@ -7,6 +7,8 @@ signal Update_Weapon_Stack
 @onready var Animation_Player = $FPS_Rig/AnimationPlayer
 @onready var Bullet_Point = $FPS_Rig/Bullet_Point
 
+var Debug_Bullet = preload("res://Scenes/bullet_debug.tscn")
+
 var Current_Weapon = null
 var Weapon_Stack = []
 var Weapon_Indicator = 0
@@ -153,6 +155,11 @@ func Hit_Scan_Collision(Collision_Point):
 	var Bullet_Collision = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
 	
 	if Bullet_Collision:
+		var Hit_Indicator = Debug_Bullet.instantiate()
+		var world = get_tree().get_root()
+		world.add_child(Hit_Indicator)
+		Hit_Indicator.global_translate(Bullet_Collision.position)
+		
 		Hit_Scan_Damage(Bullet_Collision.collider)
 	
 

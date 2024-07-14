@@ -17,8 +17,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 disable_mode = 2
 collision_layer = 4
 collision_mask = 15
-mass = 2.0
+mass = 10.0
 can_sleep = false
+max_contacts_reported = 4
+contact_monitor = true
+linear_damp = 1.0
+angular_damp = 1.0
 script = ExtResource("1_h0b2q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
