@@ -1,20 +1,21 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://c5550a20yjbpk"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://cawjkqfukekvb"]
 
-[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_ogf8y"]
+[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_hlxwx"]
 
 [resource]
-script = ExtResource("1_ogf8y")
+script = ExtResource("1_hlxwx")
 Weapon_Name = "Wand"
 Activate_Animation = "Wand Activate"
 Shoot_Animation = "Wand Shoot"
 Reload_Animation = "Wand Reload"
 Deactivate_Animation = "Wand Deactivate"
 Out_Of_Ammo_Animation = "Wand OOA"
-Current_Ammo = 15
-Reserve_Ammo = 30
-Magazine = 15
-Max_Ammo = 60
+Current_Ammo = 10
+Reserve_Ammo = 20
+Magazine = 10
+Max_Ammo = 40
 Auto_Fire = true
-Type = 1
 Weapon_Range = 2000
 Damage = 1
+Type = 1
+Projectile_Velocity = 0

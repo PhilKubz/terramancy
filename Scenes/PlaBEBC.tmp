@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://n3nu81ax15wb"]
+[gd_scene load_steps=23 format=3 uid="uid://n3nu81ax15wb"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_k4ge8"]
 [ext_resource type="Script" path="res://Scripts/HUD.gd" id="2_3nbpe"]
@@ -496,13 +496,8 @@ _data = {
 "Wand Shoot": SubResource("Animation_ee8uk")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ienav"]
-size = Vector3(1.84052, 1.0011, 0.973633)
-
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_k4ge8")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -571,6 +566,7 @@ scale = Vector2(6.635, 6.635)
 mesh = SubResource("SphereMesh_q1cif")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_u37vx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -582,7 +578,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.776693, -0.0758376)
 [node name="Weapons_Manager" type="Node3D" parent="MainCamera"]
 script = ExtResource("2_heivj")
 _weapon_resources = Array[Resource("res://Scripts/Weapon_Resource.gd")]([ExtResource("4_ni7o7"), ExtResource("5_nluf6")])
-Start_Weapons = Array[String](["Wand"])
+Start_Weapons = Array[String](["Wand", "Sceptre"])
 
 [node name="FPS_Rig" type="Node3D" parent="MainCamera/Weapons_Manager"]
 
@@ -602,17 +598,8 @@ libraries = {
 [node name="Bullet_Point" type="Marker3D" parent="MainCamera/Weapons_Manager/FPS_Rig"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.634337, -0.291518, -0.814962)
 
-[node name="Pick_Up_Detection" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 8
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pick_Up_Detection"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.83855, -0.00881958, -0.495782, -0.0242387)
-shape = SubResource("BoxShape3D_ienav")
-
 [connection signal="Update_Ammo" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_ammo"]
 [connection signal="Update_Weapon_Stack" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_update_weapon_stack"]
 [connection signal="Weapon_Changed" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_changed"]
 [connection signal="Weapon_Type" from="MainCamera/Weapons_Manager" to="CanvasLayer" method="_on_weapons_manager_weapon_type"]
 [connection signal="animation_finished" from="MainCamera/Weapons_Manager/FPS_Rig/AnimationPlayer" to="MainCamera/Weapons_Manager" method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="Pick_Up_Detection" to="MainCamera/Weapons_Manager" method="_on_pick_up_detection_body_entered"]

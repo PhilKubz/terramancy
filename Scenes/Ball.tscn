@@ -14,6 +14,10 @@ uv1_world_triplanar = true
 
 [node name="Ball" type="RigidBody3D" groups=["Target"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505837, 0)
+disable_mode = 2
+collision_layer = 4
+collision_mask = 23
+mass = 0.4
 can_sleep = false
 script = ExtResource("1_d2fqn")
 

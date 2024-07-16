@@ -12,6 +12,9 @@ roughness = 0.93
 albedo_color = Color(0.702498, 1, 0.999942, 1)
 metallic = 0.17
 roughness = 0.55
+emission_enabled = true
+emission = Color(0.52549, 0.909804, 0.894118, 1)
+emission_energy_multiplier = 1.2
 
 [node name="Sceptre2" instance=ExtResource("1_mhg2o")]
 transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)

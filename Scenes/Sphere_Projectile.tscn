@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvnw4q2putdpv"]
+
+[ext_resource type="Script" path="res://Scripts/Sphere_Projectile.gd" id="1_gsarl"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_f2ln8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm165"]
+albedo_color = Color(0.702498, 1, 0.999942, 1)
+metallic = 0.17
+roughness = 0.55
+emission_enabled = true
+emission = Color(0.526969, 0.908259, 0.893917, 1)
+emission_energy_multiplier = 1.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y7a8p"]
+
+[node name="Sphere_Projectile" type="RigidBody3D"]
+top_level = true
+collision_layer = 16
+collision_mask = 5
+mass = 2.0
+continuous_cd = true
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_gsarl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.31, 0, 0, 0, 0.31, 0, 0, 0, 0.31, 0, 0, 0)
+mesh = SubResource("SphereMesh_f2ln8")
+surface_material_override/0 = SubResource("StandardMaterial3D_cm165")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.3627, 0, 0, 0, 0.3627, 0, 0, 0, 0.3627, 0, 0, 0)
+shape = SubResource("SphereShape3D_y7a8p")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

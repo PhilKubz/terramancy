@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bdwxqufb8wgpe"]
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=4 format=3 uid="uid://ckwmy31piws4t"]
 
-[ext_resource type="Script" path="res://Scripts/weapon_resource.gd" id="1_ogf8y"]
+[ext_resource type="PackedScene" uid="uid://dvnw4q2putdpv" path="res://Scenes/Sphere_Projectile.tscn" id="1_lq4c0"]
+[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_u08ne"]
+[ext_resource type="PackedScene" uid="uid://7fdj82bxmgkp" path="res://Scenes/Spawnable weapons/Sceptre.tscn" id="2_7pd06"]
 
 [resource]
-script = ExtResource("1_ogf8y")
+script = ExtResource("1_u08ne")
 Weapon_Name = "Sceptre"
 Activate_Animation = "Sceptre Activate"
 Shoot_Animation = "Sceptre Shoot"
@@ -13,8 +15,11 @@ Out_Of_Ammo_Animation = "Sceptre OOA"
 Current_Ammo = 5
 Reserve_Ammo = 10
 Magazine = 5
-Max_Ammo = 15
+Max_Ammo = 25
 Auto_Fire = false
+Weapon_Range = 2000
+Damage = 3
 Type = 2
-Weapon_Range = 0
-Damage = 0
+Projectile_To_Load = ExtResource("1_lq4c0")
+Projectile_Velocity = 35
+Weapon_Drop = ExtResource("2_7pd06")
