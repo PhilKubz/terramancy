@@ -23,19 +23,17 @@ enum {NULL, HITSCAN, PROJECTILE}
 
 var Collision_Exclusion = []
 
+# Define the weapon order
+var weapon_priority = {
+	"Wand": 0,
+	"Sceptre": 1,
+	"ForceBlaster": 2
+}
+
 func _ready():
 	Initialize(Start_Weapons)
 
 func _input(event):
-	
-	# if event.is_action_pressed("Weapon_Down"):
-	#	Weapon_Indicator = min(Weapon_Indicator + 1, Weapon_Stack.size() - 1)
-	#	exit(Weapon_Stack[Weapon_Indicator])
-		
-	#if event.is_action_pressed("Weapon_Up"):
-	#	Weapon_Indicator = max(Weapon_Indicator - 1, 0)
-	#	exit(Weapon_Stack[Weapon_Indicator])
-	
 	if event.is_action_pressed("Select_Weapon_1"):
 		select_weapon(0)
 	
@@ -58,27 +56,48 @@ func _input(event):
 	
 	if event.is_action_pressed("Reload"):
 		reload()
-	
-#	if event.is_action_pressed("Drop"):
-#		Drop(Current_Weapon.Weapon_Name)
-		
+
 func select_weapon(index: int):
 	if index < Weapon_Stack.size():
 		Weapon_Indicator = index
 		exit(Weapon_Stack[Weapon_Indicator])
+		emit_signal("Weapon_Type", Weapon_List[Weapon_Stack[Weapon_Indicator]].Type)  # Emit signal to update weapon type
+		emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])  # Emit signal to update ammo
 
 func Initialize(_start_weapons: Array):
+	# Load weapons into Weapon_List
 	for weapon in _weapon_resources:
 		Weapon_List[weapon.Weapon_Name] = weapon
 	
-	for i in _start_weapons:
-		Weapon_Stack.push_back(i)
-		
-	Current_Weapon = Weapon_List[Weapon_Stack[0]]
-	emit_signal("Update_Weapon_Stack", Weapon_Stack)
-	emit_signal("Weapon_Type", Current_Weapon.Type)  # Emit the weapon type signal here
-	enter()
+	# Clear and sort _start_weapons based on weapon_priority
+	_start_weapons.sort_custom(Callable(self, "_sort_weapons_by_priority"))
 	
+	# Explicitly set the order of weapons
+	Weapon_Stack.clear()  # Clear the stack to ensure it's empty before adding weapons
+
+	# Add weapons in the specified priority order
+	for weapon_name in ["Wand", "Sceptre", "ForceBlaster"]:
+		if weapon_name in Weapon_List:
+			Weapon_Stack.push_back(weapon_name)
+	
+	# Add any remaining weapons from _start_weapons that are not already included
+	for weapon_name in _start_weapons:
+		if weapon_name not in Weapon_Stack:
+			Weapon_Stack.push_back(weapon_name)
+
+	# Ensure the order of _start_weapons is maintained for weapons that are not explicitly ordered
+	_start_weapons.sort_custom(Callable(self, "_sort_weapons_by_priority"))
+	
+	# Update Current_Weapon based on the first weapon in the stack
+	if Weapon_Stack.size() > 0:
+		Current_Weapon = Weapon_List[Weapon_Stack[0]]
+		emit_signal("Update_Weapon_Stack", Weapon_Stack)
+		emit_signal("Weapon_Type", Current_Weapon.Type)
+		enter()
+
+func _sort_weapons_by_priority(a: String, b: String) -> int:
+	return weapon_priority.get(a, 999) - weapon_priority.get(b, 999)  # Default priority for unknown weapons is very low
+
 func enter():
 	Animation_Player.queue(Current_Weapon.Activate_Animation)
 	emit_signal("Weapon_Changed", Current_Weapon.Weapon_Name)
@@ -104,7 +123,6 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == Current_Weapon.Shoot_Animation and Current_Weapon.Auto_Fire == true:
 		if Input.is_action_pressed("Shoot"):
 			shoot()
-
 
 func shoot():
 	if Current_Weapon.Current_Ammo != 0:
@@ -163,7 +181,6 @@ func Get_Camera_Collision()->Vector3:
 	else:
 		return Ray_End
 	
-	
 func Hit_Scan_Collision(Collision_Point):
 	var Bullet_Direction = (Collision_Point - Bullet_Point.get_global_transform().origin).normalized()
 	var New_Intersection = PhysicsRayQueryParameters3D.create(Bullet_Point.get_global_transform().origin, Collision_Point + Bullet_Direction * 2)
@@ -178,7 +195,6 @@ func Hit_Scan_Collision(Collision_Point):
 		
 		Hit_Scan_Damage(Bullet_Collision.collider, Bullet_Direction, Bullet_Collision.position)
 	
-
 func Hit_Scan_Damage(Collider, Direction, Position):
 	if Collider.is_in_group("Target") and Collider.has_method("Hit_Successful"):
 		Collider.Hit_Successful(Current_Weapon.Damage, Direction, Position)
@@ -198,7 +214,6 @@ func Launch_Projectile(Point: Vector3):
 func Remove_Exclusion(projectile_rid):
 	Collision_Exclusion.erase(projectile_rid)
 
-
 func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 	# Ensure the body is of the expected type
 	if body is RigidBody3D:
@@ -206,7 +221,6 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 		var weapon_name = body.weapon_name
 		var current_ammo = body.current_ammo
 		var reserve_ammo = body.reserve_ammo
-		print(body.weapon_name)
 
 		# Check if Weapon_Stack is initialized properly
 		if Weapon_Stack == null:
@@ -239,6 +253,17 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 		body.current_ammo = min(remaining, Weapon_List[body.weapon_name].Magazine)
 		body.reserve_ammo = max(remaining - body.current_ammo, 0)
 
+func Add_Ammo(_Weapon: String, Ammo: int)-> int:
+	var _weapon = Weapon_List[_Weapon]
+	
+	var Required = _weapon.Max_Ammo - _weapon.Reserve_Ammo
+	var Remaining = max(Ammo - Required, 0)
+	
+	_weapon.Reserve_Ammo += min(Ammo, Required)
+	emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+	return Remaining
+
+
 # func Drop(_name: String):
 # 	var Weapon_Reference = Weapon_Stack.find(_name, 0)
 # 	
@@ -267,12 +292,3 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 # 		else:
 # 			print("Error: Weapon_List does not contain weapon: " + _name)
 
-func Add_Ammo(_Weapon: String, Ammo: int)-> int:
-		var _weapon = Weapon_List[_Weapon]
-		
-		var Required = _weapon.Max_Ammo - _weapon.Reserve_Ammo
-		var Remaining = max(Ammo - Required, 0)
-		
-		_weapon.Reserve_Ammo += min(Ammo, Required)
-		emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
-		return Remaining
