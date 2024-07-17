@@ -13,6 +13,7 @@ func _on_weapons_manager_update_weapon_stack(Weapon_Stack):
 	CurrentWeaponStack.set_text("")
 	for i in Weapon_Stack:
 		CurrentWeaponStack.text += "\n" + str(i)
+	print(Weapon_Stack)
 
 
 

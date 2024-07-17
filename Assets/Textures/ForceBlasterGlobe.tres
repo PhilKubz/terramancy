@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c4bm4hk36kusf"]
+
+[resource]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(1, 1, 1, 0.215686)
+metallic = 0.34
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.794712, 0.966148, 0.956456, 1)
+emission_energy_multiplier = 1.12
+rim_enabled = true
+backlight_enabled = true
+backlight = Color(0.255821, 0.214004, 0.22774, 1)

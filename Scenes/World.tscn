@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw5w4ynpgqwua"]
+[gd_scene load_steps=16 format=3 uid="uid://cw5w4ynpgqwua"]
 
 [ext_resource type="PackedScene" uid="uid://damextwfety1w" path="res://Scenes/Ground.tscn" id="1_oa4mf"]
 [ext_resource type="PackedScene" uid="uid://n3nu81ax15wb" path="res://Scenes/Player.tscn" id="2_n1bu4"]
@@ -9,7 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://isldjqynvqrm" path="res://Scenes/Target.tscn" id="8_88f1q"]
 [ext_resource type="PackedScene" uid="uid://mm1x8vfhnsrt" path="res://Scenes/Prototype Level Objects/Slope_csg.tscn" id="8_baqt3"]
 [ext_resource type="PackedScene" uid="uid://c80y2a3wvt1vk" path="res://Scenes/Reset_Button.tscn" id="9_a1nqd"]
+[ext_resource type="PackedScene" uid="uid://wta80fc20a24" path="res://Scenes/Prototype Level Objects/Platform_Box_csg.tscn" id="9_e4o7g"]
 [ext_resource type="PackedScene" uid="uid://7fdj82bxmgkp" path="res://Scenes/Spawnable weapons/Sceptre.tscn" id="10_s1ys5"]
+[ext_resource type="PackedScene" uid="uid://jfbdar7ewfbb" path="res://Scenes/Spawnable weapons/ForceBlaster.tscn" id="11_br7w0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ht5ec"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -40,43 +42,43 @@ environment = SubResource("Environment_bcfb8")
 [node name="Player" parent="." instance=ExtResource("2_n1bu4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 39.681)
 
-[node name="LeveL Design Elements" type="Node3D" parent="."]
+[node name="Level Design Elements" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2275, 0, 1.56916)
 
-[node name="Node3D" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052567, 28.7596)
 
-[node name="Node3D3" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D3" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052567, 36.755)
 
-[node name="Node3D6" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D6" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.93229, -0.052568, 44.7141)
 
-[node name="Node3D2" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D2" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 28.7262)
 
-[node name="Node3D4" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D4" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 36.724)
 
-[node name="Node3D5" parent="LeveL Design Elements" instance=ExtResource("7_7ha1n")]
+[node name="Node3D5" parent="Level Design Elements" instance=ExtResource("7_7ha1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3076, -0.052567, 44.7259)
 
-[node name="Wall" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+[node name="Wall" parent="Level Design Elements" instance=ExtResource("7_idx5y")]
 transform = Transform3D(0.0894611, 0, -5.72164, 0, 5.63307, 0, 0.0915462, 0, 5.59132, -5.0499, 3.21847, 21.9297)
 
-[node name="Wall5" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+[node name="Wall5" parent="Level Design Elements" instance=ExtResource("7_idx5y")]
 transform = Transform3D(0.0893972, 0, 5.72554, 0, 5.63307, 0, -0.0916087, 0, 5.58732, 9.42462, 3.21847, 21.8907)
 
-[node name="Wall2" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+[node name="Wall2" parent="Level Design Elements" instance=ExtResource("7_idx5y")]
 transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, 8.24311, 3.24328, 48.6662)
 
-[node name="Wall3" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+[node name="Wall3" parent="Level Design Elements" instance=ExtResource("7_idx5y")]
 transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, -3.85448, 3.24328, 48.6662)
 
-[node name="Wall4" parent="LeveL Design Elements" instance=ExtResource("7_idx5y")]
+[node name="Wall4" parent="Level Design Elements" instance=ExtResource("7_idx5y")]
 transform = Transform3D(-5.59506e-09, 0, 8, 0, 5.63307, 0, -0.128, 0, -3.49691e-07, 1.91506, 3.24328, 48.6662)
 
-[node name="Slope" parent="LeveL Design Elements" instance=ExtResource("8_baqt3")]
+[node name="Slope" parent="Level Design Elements" instance=ExtResource("8_baqt3")]
 transform = Transform3D(8.69279, 0, 0, 0, 3.38906, 2.4489, 0, -9.92915, 0.835871, 2.17422, -0.634216, 23.2364)
 size = Vector3(0.994263, 1, 1)
 
@@ -168,6 +170,26 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.587
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93798, 5.68865, 50.1714)
 
 [node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.438633)
 
 [node name="Sceptre" parent="Weapons" instance=ExtResource("10_s1ys5")]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.655145, 0.247636, 34.7428)
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 9.36084, 0.808039, 36.1613)
+
+[node name="ForceBlaster" parent="Weapons" instance=ExtResource("11_br7w0")]
+transform = Transform3D(0.8, 0, 0, 0, -3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, 9.45933, 0.896865, 39.3467)
+
+[node name="Spotlight" type="SpotLight3D" parent="Weapons"]
+transform = Transform3D(0.972998, -0.00259428, -0.230799, 0.230814, 0.0109362, 0.972936, -1.59513e-10, 0.999937, -0.0112397, 8.77652, 3.05815, 36.7776)
+light_color = Color(1, 1, 0.14902, 1)
+shadow_enabled = true
+
+[node name="Spotlight2" type="SpotLight3D" parent="Weapons"]
+transform = Transform3D(0.972998, -0.00259428, -0.230799, 0.230814, 0.0109362, 0.972936, -1.59513e-10, 0.999937, -0.0112397, 8.77652, 3.05815, 39.5815)
+light_color = Color(1, 1, 0.14902, 1)
+shadow_enabled = true
+
+[node name="PlatformBox" parent="Weapons" instance=ExtResource("9_e4o7g")]
+transform = Transform3D(-1.00973e-07, 0, 1, 0, 0.695, 0, -2.31, 0, -4.37114e-08, 9.44036, 0.36839, 39.584)
+
+[node name="PlatformBox2" parent="Weapons" instance=ExtResource("9_e4o7g")]
+transform = Transform3D(-1.00973e-07, 0, 1, 0, 0.695, 0, -2.31, 0, -4.37114e-08, 9.44036, 0.36839, 36.8148)

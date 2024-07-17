@@ -7,7 +7,7 @@ albedo_texture = ExtResource("1_k3ant")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="Node3D" type="CSGBox3D"]
+[node name="Slope" type="CSGBox3D"]
 transform = Transform3D(2.4914, 0, 0, 0, 3.16993, 2.03646, 0, -9.28715, 0.695094, 0, -1.21359, 0)
 use_collision = true
 material = SubResource("StandardMaterial3D_ruelp")

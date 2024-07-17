@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://wta80fc20a24"]
+
+[ext_resource type="Texture2D" uid="uid://d373fg6hymw1q" path="res://Assets/Textures/Prototyping Grids/texture_07.png" id="1_bb4xo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ddiob"]
+albedo_texture = ExtResource("1_bb4xo")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="PlatformBox" type="CSGBox3D"]
+transform = Transform3D(2.31, 0, 0, 0, 0.695, 0, 0, 0, 1, 0, 0.354575, 0)
+use_collision = true
+material = SubResource("StandardMaterial3D_ddiob")

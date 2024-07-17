@@ -41,6 +41,9 @@ func _input(event):
 	
 	if event.is_action_pressed("Select_Weapon_2"):
 		select_weapon(1)
+	
+	if event.is_action_pressed("Select_Weapon_3"):
+		select_weapon(2)
 		
 	if event.is_action("Scroll_Up"):
 		Weapon_Indicator = max(Weapon_Indicator - 1, 0)
@@ -203,6 +206,7 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 		var weapon_name = body.weapon_name
 		var current_ammo = body.current_ammo
 		var reserve_ammo = body.reserve_ammo
+		print(body.weapon_name)
 
 		# Check if Weapon_Stack is initialized properly
 		if Weapon_Stack == null:
@@ -227,6 +231,13 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 
 		# Correct the method call to queue_free
 		body.queue_free()
+		
+		var remaining = Add_Ammo(body.weapon_name, body.current_ammo + body.reserve_ammo)
+		if remaining == 0:
+			body.queue_free()
+		
+		body.current_ammo = min(remaining, Weapon_List[body.weapon_name].Magazine)
+		body.reserve_ammo = max(remaining - body.current_ammo, 0)
 
 # func Drop(_name: String):
 # 	var Weapon_Reference = Weapon_Stack.find(_name, 0)
@@ -256,3 +267,12 @@ func _on_pick_up_detection_body_entered(body: Node3D) -> void:
 # 		else:
 # 			print("Error: Weapon_List does not contain weapon: " + _name)
 
+func Add_Ammo(_Weapon: String, Ammo: int)-> int:
+		var _weapon = Weapon_List[_Weapon]
+		
+		var Required = _weapon.Max_Ammo - _weapon.Reserve_Ammo
+		var Remaining = max(Ammo - Required, 0)
+		
+		_weapon.Reserve_Ammo += min(Ammo, Required)
+		emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])
+		return Remaining

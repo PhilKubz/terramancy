@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=3 format=3 uid="uid://ctgf1vhfdtow8"]
+
+[ext_resource type="PackedScene" uid="uid://jfbdar7ewfbb" path="res://Scenes/Spawnable weapons/ForceBlaster.tscn" id="1_rihgr"]
+[ext_resource type="Script" path="res://Scripts/Weapon_Resource.gd" id="1_wr4o4"]
+
+[resource]
+script = ExtResource("1_wr4o4")
+Weapon_Name = "ForceBlaster"
+Activate_Animation = "Force Activate"
+Shoot_Animation = "Force Shoot"
+Reload_Animation = "Force Reload"
+Deactivate_Animation = "Force Deactivate"
+Out_Of_Ammo_Animation = "Force OOA"
+Current_Ammo = 3
+Reserve_Ammo = 3
+Magazine = 3
+Max_Ammo = 12
+Auto_Fire = false
+Weapon_Range = 2000
+Damage = 4
+Type = 1
+Projectile_Velocity = 200
+Weapon_Drop = ExtResource("1_rihgr")
